@@ -1,5 +1,5 @@
 import java.util.*;
-public class StorageServiceImplementation{
+public class StorageServiceImplementation implements lStorageService{
     
     StorageServiceImplementation(){
      HashMap<String, Rider> riderMap = new HashMap<>();
