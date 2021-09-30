@@ -1,22 +1,24 @@
 import java.util.*;
 public class StorageServiceImplementation{
     
-    HashMap<String, Rider> riderMap = new HashMap<>();
-    HashMap<String, Driver> driverMap = new HashMap<>();
-    HashMap<String, Vehicle> vehicleMap = new HashMap<>();
-    HashMap<String, Booking> bookingMap = new HashMap<>();
-    List<Booking> bookList = new ArrayList<>();
+    StorageServiceImplementation(){
+     HashMap<String, Rider> riderMap = new HashMap<>();
+     HashMap<String, Driver> driverMap = new HashMap<>();
+     HashMap<String, Vehicle> vehicleMap = new HashMap<>();
+     HashMap<String, Booking> bookingMap = new HashMap<>();
+     List<Booking> bookList = new ArrayList<>();
+    }
     
     boolean saveRider(Rider rider){
         if(!riderMap.containsKey(rider.getName()))
-          riderMap.put(rider.getName(), rider);
+          riderMap.put(rider.getName(), rider);                                            //What to do when it contains?
         else return false;
     return true;
     }
     
     boolean saveDriver(Driver driver){
         if(!driverMap.containsKey(driver.getName()))
-          driverMap.put(driver.getName(), driver);
+          driverMap.put(driver.getName(), driver);                                        //What to do when it contains?
         else return false;
     return true;
     }
