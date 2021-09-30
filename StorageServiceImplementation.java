@@ -1,23 +1,31 @@
 import java.util.*;
 public class StorageServiceImplementation implements lStorageService{
     
-    HashMap<String, Rider> riderMap = new HashMap<>();
-    HashMap<String, Driver> driverMap = new HashMap<>();
-    HashMap<String, Vehicle> vehicleMap = new HashMap<>();
-    HashMap<String, Booking> bookingMap = new HashMap<>();
-    List<Booking> bookList = new ArrayList<>();
+    HashMap<String, Rider> riderMap;
+    HashMap<String, Driver> driverMap;
+    HashMap<String, Vehicle> vehicleMap;
+    HashMap<String, Booking> bookingMap;
+    List<Booking> bookList;
+
+    StorageServiceImplementation(){
+      riderMap   = new HashMap<>();
+      driverMap  = new HashMap<>();
+      vehicleMap = new HashMap<>();
+      bookingMap = new HashMap<>();
+      bookList   = new ArrayList<>();
+    }
     
     public boolean saveRider(Rider rider){
-        if(!riderMap.containsKey(rider.getName()))                                     //What to do when it contains?
+        if(!riderMap.containsKey(rider.getName()))                                   //What to do if it contains?
           riderMap.put(rider.getName(), rider);
         else return false;
     return true;
     }
     
     public boolean saveDriver(Driver driver){
-        if(!driverMap.containsKey(driver.getName()))                                   //What to do when it contains?
+        if(!driverMap.containsKey(driver.getName()))
           driverMap.put(driver.getName(), driver);
-        else return false; 
+        else return false;
     return true;
     }
     
@@ -43,16 +51,17 @@ public class StorageServiceImplementation implements lStorageService{
     return true;
     }
     
-    public Vehicle find(Double lat, Double lon, Double maxDistance){                   //maxDistance?
+    public Vehicle find(Double lat, Double lon){                                       //maxDistance?
         for(String carNum : vehicleMap.keySet()){                                      //O(n)
             Vehicle vTemp = vehicleMap.get(carNum); 
-            if(vTemp.getLat() == lat && vTemp.getLat() == lon)
+            if(vTemp.getLat() == lat && vTemp.getLon() == lon)
               return vTemp;
         }
     return null;
     }
     
     public List<Booking> rideHistory(String riderUserId){
+        bookList = new ArrayList<>();
         for(String id : bookingMap.keySet()){                                           //O(n)
            Booking temp = bookingMap.get(id);                                           
            if(temp.getUserId().equals(riderUserId)){
