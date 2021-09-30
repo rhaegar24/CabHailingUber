@@ -46,7 +46,7 @@ public class StorageServiceImplementation{
     Vehicle find(Double lat, Double lon, Double maxDistance){                          //maxDistance?
         for(String carNum : vehicleMap.keySet()){                                      //O(n)
             Vehicle vTemp = vehicleMap.get(carNum); 
-            if(vTemp.getLat() == lat && vTemp.getLat() == lon)
+            if(vTemp.getLat() == lat && vTemp.getLon() == lon)
               return vTemp;
         }
     return null;
